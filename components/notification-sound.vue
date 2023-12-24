@@ -4,7 +4,7 @@ const audio = ref<HTMLAudioElement>()
 
 // wenn bestellungen sich ändern, dann soll ein sound abgespielt werden
 watch(() => props.bestellungen.length, () => {
-  console.log('bestellungen changed')
+  audio.value!.currentTime = 0
   audio.value?.play()
 })
 

@@ -33,9 +33,11 @@ setInterval(refresh, 1000 * 60 * 5)
       <v-app-bar>
         <v-toolbar-title>Bestellungen</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-chip color="green" text-color="white">Aktualisiert
+        <v-chip text-color="white">Aktualisiert
           {{ new Date(data?.request_time).toLocaleTimeString('de-de', {hour: '2-digit', minute: '2-digit'}) }}
         </v-chip>
+
+        <v-btn @click="addRandomOrder" icon="mdi-plus"/>
         <v-btn icon="mdi-refresh" @click="refresh"/>
       </v-app-bar>
       <v-main>
@@ -43,16 +45,6 @@ setInterval(refresh, 1000 * 60 * 5)
         <bestellungen :bestellungen="data.bestellungen" @refresh="refresh" v-else/>
       </v-main>
       <notification-sound :bestellungen="data.bestellungen"/>
-      <v-btn
-          fab
-          bottom
-          right
-          color="green"
-          dark
-          fixed
-          @click="addRandomOrder"
-      >Zufällige Bestellung hinzufügen
-      </v-btn>
     </v-app>
   </v-theme-provider>
 </template>
