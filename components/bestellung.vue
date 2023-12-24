@@ -3,9 +3,9 @@ defineProps(['item'])
 </script>
 
 <template>
-  <div>
+  <v-card>
     Component: {{ item }}
-  </div>
+  </v-card>
 </template>
 
 <style scoped></style>
