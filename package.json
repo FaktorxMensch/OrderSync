@@ -10,7 +10,9 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@formkit/auto-animate": "latest",
     "@nuxt/devtools": "latest",
+    "@nuxtjs/tailwindcss": "latest",
     "nuxt": "^3.8.2",
     "vue": "^3.3.12",
     "vue-router": "^4.2.5"
