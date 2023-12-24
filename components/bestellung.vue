@@ -1,8 +1,10 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+defineProps(['item'])
+</script>
 
 <template>
   <div>
-    Component: bestellung
+    Component: {{ item }}
   </div>
 </template>
 
