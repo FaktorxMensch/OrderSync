@@ -2,16 +2,16 @@
 defineProps(['bestellungen'])
 const emit = defineEmits(['refresh'])
 const headers = [
-  {text: 'ID', value: 'id'},
+  {title: 'Nr.', value: 'id'},
   {title: 'Name', value: 'name'},
-  {title: 'Abholzeit', value: 'abholzeit'},
+  {title: 'Abholzeit', value: 'abholzeit', sortable: true},
   // {title: 'Rufnummer', value: 'rufnummer'},
   // {title: 'Vegan', value: 'vegan'},
-  {title: 'Kommentar', value: 'kommentar'},
+  // {title: 'Kommentar', value: 'kommentar'},
   // {title: 'Vor Ort', value: 'vor_ort'},
   {title: 'Posten', value: 'posten'},
   {title: 'Summe', value: 'summe'},
-  {title: 'Status', value: 'status'},
+  {title: 'Status', value: 'status', sortable: true},
   {title: 'Aktionen', value: 'actions'}
 ]
 
@@ -45,7 +45,10 @@ const euro = (value: number) => {
 </script>
 
 <template>
-  <v-data-table :headers="headers" :items="bestellungen">
+  <v-data-table
+      :headers="headers"
+      :items="bestellungen"
+  >
     <template v-slot:item.abholzeit="{ item }">
       <v-chip text-color="white">
         {{ timeAgo(new Date(item.abholzeit)) }}
@@ -56,13 +59,19 @@ const euro = (value: number) => {
         {{ euro(item.summe) }}
       </v-chip>
     </template>
+    <template v-slot:item.posten="{ item }">
+      <bestellungs-posten v-for="posten in item.posten" :posten="posten" :key="posten.id"/>
+      <v-icon v-if="item.vegan" color="green" icon="mdi-leaf"/>
+      <span v-if="item.kommentar" density="compact" type="info">
+        <v-icon left>mdi-comment</v-icon>
+        {{ item.kommentar }}
+      </span>
+    </template>
+
     <template v-slot:item.actions="{ item }">
       <v-btn icon @click="emit('refresh')">
         <v-icon>mdi-refresh</v-icon>
       </v-btn>
-    </template>
-    <template v-slot:item.vegan="{ item }">
-      <v-icon v-if="item.vegan" color="green" icon="mdi-leaf"/>
     </template>
   </v-data-table>
 </template>
