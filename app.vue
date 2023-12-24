@@ -47,3 +47,6 @@ setInterval(refresh, 1000 * 60 * 5)
     </v-app>
   </v-theme-provider>
 </template>
+
+<style>
+</style>
