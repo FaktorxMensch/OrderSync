@@ -36,7 +36,6 @@ setInterval(refresh, 1000 * 60 * 5)
         <v-chip text-color="white">Aktualisiert
           {{ new Date(data?.request_time).toLocaleTimeString('de-de', {hour: '2-digit', minute: '2-digit'}) }}
         </v-chip>
-
         <v-btn @click="addRandomOrder" icon="mdi-plus"/>
         <v-btn icon="mdi-refresh" @click="refresh"/>
       </v-app-bar>
