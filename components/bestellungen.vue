@@ -7,7 +7,7 @@ const headers = [
   {title: 'Gastname', value: 'name'},
   {title: '#', value: 'id'},
   {title: 'Gesamtpreis', value: 'summe', align: 'end'},
-  {title: 'Zahlung', value: 'bezahlt'},
+  // {title: 'Zahlung', value: 'bezahlt'},
   {title: 'Status', value: 'status', sortable: true},
 ]
 
@@ -32,7 +32,12 @@ const euro = (value: number) => {
   return value.toFixed(2).replace('.', ',')
 }
 
-const click = (item: any) => {
+const bestellung = ref(null)
+const openBestellung = (item: any) => {
+  bestellung.value = item
+}
+
+const changeStatusDummy = (item: any) => {
   // $valid_statuses = array('Neu', 'Erhalten', 'Bearbeitung', 'Abholbereit', 'Abgeholt', 'Storniert');
   if (item.status === 'Neu') {
     item.status = 'Erhalten'
@@ -51,14 +56,15 @@ const click = (item: any) => {
 </script>
 
 <template>
+  <bestellung v-if="bestellung" :bestellung="bestellung"/>
   <v-data-table :headers="headers" :items="bestellungen" items-per-page="4">
     <template v-slot:item="{ item }">
-      <tr :class="item.status" @click="click(item)">
+      <tr :class="item.status" @click="openBestellung(item)">
         <td>{{ new Date(item.abholzeit).toLocaleTimeString('de-de', {hour: '2-digit', minute: '2-digit'}) }}</td>
         <td>{{ item.name }}</td>
         <td>{{ item.id }}</td>
         <td class="text-end">{{ euro(item.summe) }} EUR</td>
-        <td>{{ item.bezahlt ? 'bezahlt' : 'offen' }}</td>
+        <!--        <td>{{ item.bezahlt ? 'bezahlt' : 'offen' }}</td>-->
         <td>{{ item.status }}</td>
       </tr>
     </template>
@@ -85,7 +91,7 @@ tr.Storniert {
   text-decoration: line-through;
 }
 
-tr.Abgeholt,tr.Storniert {
+tr.Abgeholt, tr.Storniert {
   opacity: 0.1;
 }
 

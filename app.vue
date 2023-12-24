@@ -10,7 +10,7 @@ const addRandomOrder = async () => {
     name: 'Zufälliger Gast',
     summe: Math.random() * 100,
     bezahlt: Math.random() > 0.5,
-    status: 'offen',
+    status: 'Neu',
     posten: [
       {
         id: Math.floor(Math.random() * 1000),
