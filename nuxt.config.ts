@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
     devtools: {enabled: false},
     modules: ["@nuxtjs/tailwindcss", "nuxt-vuetify", "@pinia/nuxt"],
+    ssr: false,
 
     // add head for web app capable and so on, viewport 1
     app: {
