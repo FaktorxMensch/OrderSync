@@ -30,7 +30,11 @@ const emit = defineEmits(['close'])
 
     </header>
     <main>
-      {{ bestellung }}
+      <bestellung-posten v-for="posten in bestellung.posten" :key="posten.id" :posten="posten"/>
+      <div class="flex justify-between p-4">
+        <span class="text-lg">Gesamtsumme</span>
+        <span class="text-lg">{{ bestellung?.summe }} EUR</span>
+      </div>
     </main>
     <footer>
       <v-btn :href="`tel:${bestellung.rufnummer}`" prepend-icon="mdi-phone">Anrufen</v-btn>
