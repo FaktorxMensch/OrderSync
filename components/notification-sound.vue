@@ -14,7 +14,6 @@ onMounted(() => {
 </script>
 
 <template>
-  {{ props.bestellungen.length }}
   <audio src="/notification.mp3" ref="audio" preload="auto"/>
 </template>
 
