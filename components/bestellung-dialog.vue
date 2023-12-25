@@ -49,12 +49,6 @@ const bestellung = computed(() => orders.bestellung)
         <span class="text-lg">{{ bestellung?.summe }} EUR</span>
       </div>
     </main>
-    <footer>
-      <v-btn :href="`tel:${bestellung.rufnummer}`" prepend-icon="mdi-phone">Anrufen</v-btn>
-      <v-spacer/>
-      <v-btn @click="orders.closeBestellung()" prepend-icon="mdi-close">Schließen
-      </v-btn>
-    </footer>
   </div>
 </template>
 
