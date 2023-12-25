@@ -53,7 +53,7 @@ const bestellung = computed(() => orders.bestellung)
           </v-btn>
         </template>
       </v-app-bar>
-      <v-main>
+      <v-main v-if="data !== null">
         <v-progress-circular v-if="data.pending" indeterminate/>
         <bestellungen :bestellungen="data.bestellungen" @refresh="refresh" v-else/>
       </v-main>

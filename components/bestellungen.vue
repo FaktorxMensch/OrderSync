@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import {useOrdersStore} from "~/stores/orders";
-
 defineProps(['bestellungen'])
 const emit = defineEmits(['refresh'])
 
