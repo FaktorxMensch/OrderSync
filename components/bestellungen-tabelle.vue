@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import {useOrdersStore} from "~/stores/orders";
-defineProps(['bestellungen'])
-const emit = defineEmits(['refresh'])
+const orders = useOrdersStore()
+const bestellungen = computed(() => orders.bestellungen)
 
 const headers = [
   {title: 'Zeit', value: 'abholzeit', sortable: true},
@@ -16,7 +15,6 @@ const euro = (value: number) => {
   return value.toFixed(2).replace('.', ',')
 }
 
-const orders = useOrdersStore()
 const openBestellung = (item: any) => {
   // wenn status Neu, setze auf Erhalten
   if (item.status === 'Neu') {
@@ -29,9 +27,7 @@ const openBestellung = (item: any) => {
 
 <template>
   <bestellung-dialog/>
-  <v-data-table :headers="headers" :items="bestellungen" items-per-page="50"
-                density="comfortable"
-  >
+  <v-data-table :headers="headers" :items="bestellungen" items-per-page="50" density="comfortable">
     <template v-slot:item="{ item }">
       <tr :class="item.status" @click="openBestellung(item)">
         <td>{{ new Date(item.abholzeit).toLocaleTimeString('de-de', {hour: '2-digit', minute: '2-digit'}) }}</td>
@@ -72,8 +68,8 @@ tr.Abgeholt, tr.Storniert {
 }
 
 tr {
-  transition: 0.3s;
-  transition-delay: 0.2s;
+  transition-delay: 1.2s;
+  transition: 0.4s cubic-bezier(0.175, 1.2, 0.32, 1.5);
 }
 
 @keyframes blinking {

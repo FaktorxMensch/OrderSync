@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-const props = defineProps(['bestellungen'])
+const orders = useOrdersStore()
+const {bestellungen} = storeToRefs(orders)
 const audio = ref<HTMLAudioElement>()
 
 // wenn bestellungen sich ändern, dann soll ein sound abgespielt werden
-watch(() => props.bestellungen.length, () => {
+watch(() => orders.bestellungen.length, () => {
   audio.value!.currentTime = 0
   audio.value?.play()
 })

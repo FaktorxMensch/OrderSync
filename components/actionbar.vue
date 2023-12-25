@@ -1,6 +1,7 @@
 <script setup>
 const orders = useOrdersStore()
 const bestellung = computed(() => orders.bestellung)
+const cleanable = computed(() => orders.bestellungen.filter((b) => b.status === 'Storniert' || b.status === 'Abgeholt').length > 1)
 </script>
 <template>
   <v-app-bar density="compact">
@@ -11,6 +12,15 @@ const bestellung = computed(() => orders.bestellung)
     </template>
     <template v-else>
       <v-toolbar-title>Übersicht</v-toolbar-title>
+      <v-spacer/>
+
+      <v-btn
+          prepend-icon="mdi-broom"
+          v-if="cleanable"
+          @click="orders.clean"
+          text-color="white">Aufräumen
+      </v-btn>
+
       <v-btn
           prepend-icon="mdi-refresh"
           @click="refresh"
