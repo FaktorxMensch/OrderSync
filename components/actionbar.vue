@@ -2,6 +2,7 @@
 const orders = useOrdersStore()
 const bestellung = computed(() => orders.bestellung)
 const cleanable = computed(() => orders.bestellungen.filter((b) => b.status === 'Storniert' || b.status === 'Abgeholt').length > 0)
+defineProps(['refresh'])
 </script>
 <template>
   <v-app-bar density="compact">
