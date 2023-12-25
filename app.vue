@@ -11,29 +11,7 @@ watch(data, () => {
   orders.request_time = data.value.request_time
 })
 
-const addRandomOrder = async () => {
-  data.value.bestellungen.push({
-    id: Math.floor(Math.random() * 1000),
-    abholzeit: new Date().toISOString(),
-    name: 'Zufälliger Gast',
-    summe: Math.random() * 100,
-    bezahlt: Math.random() > 0.5,
-    status: 'Neu',
-    posten: [
-      {
-        id: Math.floor(Math.random() * 1000),
-        gericht: {
-          id: Math.floor(Math.random() * 1000),
-          name: 'Zufälliges Gericht'
-        },
-        menge: Math.floor(Math.random() * 10)
-      }
-    ]
-  })
-}
-
-setInterval(refresh, 1000 * 60 * 5)
-
+setInterval(refresh, 1000 * 60 * 1)
 </script>
 <template>
   <v-theme-provider theme="dark">
