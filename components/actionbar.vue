@@ -1,7 +1,7 @@
 <script setup>
 const orders = useOrdersStore()
 const bestellung = computed(() => orders.bestellung)
-const cleanable = computed(() => orders.bestellungen.filter((b) => b.status === 'Storniert' || b.status === 'Abgeholt').length > 1)
+const cleanable = computed(() => orders.bestellungen.filter((b) => b.status === 'Storniert' || b.status === 'Abgeholt').length > 0)
 </script>
 <template>
   <v-app-bar density="compact">
