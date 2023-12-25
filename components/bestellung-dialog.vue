@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-defineProps(['bestellung'])
-const emit = defineEmits(['close'])
+const orders = useOrdersStore()
+const bestellung = computed(() => orders.bestellung)
 </script>
 
 <template>
@@ -14,7 +14,7 @@ const emit = defineEmits(['close'])
             divided
             density="comfortable"
             variant="tonal"
-            @click="emit('close')"
+            @click="orders.closeBestellung()"
             mandatory
         >
           <v-slide-group-item>
@@ -52,7 +52,7 @@ const emit = defineEmits(['close'])
     <footer>
       <v-btn :href="`tel:${bestellung.rufnummer}`" prepend-icon="mdi-phone">Anrufen</v-btn>
       <v-spacer/>
-      <v-btn @click="emit('close')" prepend-icon="mdi-close">Schließen
+      <v-btn @click="orders.closeBestellung()" prepend-icon="mdi-close">Schließen
       </v-btn>
     </footer>
   </div>

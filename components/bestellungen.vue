@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import {useOrdersStore} from "~/stores/orders";
+
 defineProps(['bestellungen'])
 const emit = defineEmits(['refresh'])
 
@@ -15,19 +17,19 @@ const euro = (value: number) => {
   return value.toFixed(2).replace('.', ',')
 }
 
-const bestellung = ref(null)
+const orders = useOrdersStore()
 const openBestellung = (item: any) => {
   // wenn status Neu, setze auf Erhalten
   if (item.status === 'Neu') {
     item.status = 'Erhalten'
     return
   }
-  bestellung.value = item
+  orders.openBestellung(item)
 }
 </script>
 
 <template>
-  <bestellung-dialog :bestellung="bestellung" @close="bestellung = null" v-if="bestellung"/>
+  <bestellung-dialog/>
   <v-data-table :headers="headers" :items="bestellungen" items-per-page="4">
     <template v-slot:item="{ item }">
       <tr :class="item.status" @click="openBestellung(item)">
