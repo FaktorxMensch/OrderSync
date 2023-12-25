@@ -3,6 +3,7 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "latest",
+    "@pinia/nuxt": "^0.5.1",
     "nuxt": "^3.8.2",
     "nuxt-vuetify": "latest",
     "vue": "^3.3.12",
