@@ -71,6 +71,11 @@ tr.Abgeholt, tr.Storniert {
   opacity: 0.1;
 }
 
+tr {
+  transition: 0.3s;
+  transition-delay: 0.2s;
+}
+
 @keyframes blinking {
   0% {
     background-color: #7770;

@@ -4,9 +4,13 @@ export const useOrdersStore = defineStore('orders', {
         request_time: null,
     }),
     actions: {
+        playClick() {
+            const audio = new Audio('/click.mp3')
+            audio.volume = 0.5
+            audio.play()
+        },
         openBestellung(bestellung: any) {
             this.bestellung = bestellung
-            console.log('bestellung', bestellung)
         },
         closeBestellung() {
             this.bestellung = null

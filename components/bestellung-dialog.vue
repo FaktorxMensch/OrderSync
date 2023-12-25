@@ -1,6 +1,11 @@
 <script lang="ts" setup>
 const orders = useOrdersStore()
 const bestellung = computed(() => orders.bestellung)
+
+const changeStaus = () => {
+  orders.closeBestellung()
+  orders.playClick()
+}
 </script>
 
 <template>
@@ -14,7 +19,7 @@ const bestellung = computed(() => orders.bestellung)
             divided
             density="comfortable"
             variant="tonal"
-            @click="orders.closeBestellung()"
+            @click="changeStaus"
             mandatory
         >
           <v-slide-group-item>
