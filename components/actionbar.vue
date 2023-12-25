@@ -15,7 +15,7 @@ const bestellung = computed(() => orders.bestellung)
           prepend-icon="mdi-refresh"
           @click="refresh"
           text-color="white">Stand {{
-          new Date(data?.request_time).toLocaleTimeString('de-de', {
+          new Date(orders?.request_time).toLocaleTimeString('de-de', {
             hour: '2-digit',
             minute: '2-digit'
           })

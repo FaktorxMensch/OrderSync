@@ -1,6 +1,7 @@
 export const useOrdersStore = defineStore('orders', {
     state: () => ({
-        bestellung: null
+        bestellung: null,
+        request_time: null,
     }),
     actions: {
         openBestellung(bestellung: any) {

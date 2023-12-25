@@ -5,6 +5,12 @@ const {
   data, refresh, loading, pending
 } = await useLazyFetch('https://fatima-dresden.de/wp-content/plugins/fatima_api_status_plugin/api.php?api_key=ad31f2b0-8b7c-11eb-8dcd-0242ac17841741897830003')
 
+// when data changes, save request_time in store
+const orders = useOrdersStore()
+watch(data, () => {
+  orders.request_time = data.value.request_time
+})
+
 const addRandomOrder = async () => {
   data.value.bestellungen.push({
     id: Math.floor(Math.random() * 1000),
