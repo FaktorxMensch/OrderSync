@@ -17,6 +17,11 @@ const euro = (value: number) => {
 
 const bestellung = ref(null)
 const openBestellung = (item: any) => {
+  // wenn status Neu, setze auf Erhalten
+  if (item.status === 'Neu') {
+    item.status = 'Erhalten'
+    return
+  }
   bestellung.value = item
 }
 </script>
@@ -36,8 +41,8 @@ const openBestellung = (item: any) => {
   </v-data-table>
 </template>
 
-<style scoped>
-tr.Neu {
+<style>
+tr.Neu, .v-btn.Neu {
   animation: blinking 1s infinite;
 }
 
@@ -46,11 +51,11 @@ tr.Erhalten {
 }
 
 tr.Bearbeitung {
-  background: rgba(0, 157, 255, 0.1);
+  @apply bg-sky-500 text-sky-500;
 }
 
 tr.Abholbereit {
-  background: rgba(23, 254, 2, 0.1);
+  @apply bg-green-500 text-green-500;
 }
 
 tr.Storniert {

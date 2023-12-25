@@ -6,21 +6,24 @@ const emit = defineEmits(['close'])
 <template>
   <div class="full-dialog" v-if="bestellung?.id">
     <header>
-      <h1
-          class="text-2xl text-white font-bold"
-      >Bestellung {{ bestellung.id }}</h1>
-
       <v-btn-toggle
           class="mt-4 w-full"
           v-model="bestellung.status"
           divided
-          variant="outlined"
+          variant="tonal"
           @click="emit('close')"
           mandatory
       >
-        <v-btn value="Erhalten">Erhalten</v-btn>
-        <v-btn value="Bearbeitung">Bearbeitung</v-btn>
-        <v-btn value="Abholbereit">Abholbereit</v-btn>
+        <v-btn value="Erhalten">Erhalten
+        </v-btn>
+        <v-btn value="Bearbeitung"
+               :color="bestellung.status === 'Bearbeitung' ? 'blue' : 'default'"
+        >Bearbeitung
+        </v-btn>
+        <v-btn value="Abholbereit"
+               :color="bestellung.status === 'Abholbereit' ? 'success' : 'default'"
+        >Abholbereit
+        </v-btn>
         <v-btn value="Abgeholt">Abgeholt</v-btn>
         <v-btn value="Storniert">Storniert</v-btn>
       </v-btn-toggle>
@@ -42,8 +45,8 @@ const emit = defineEmits(['close'])
 .full-dialog {
   @apply absolute inset-0 z-50 bg-neutral-800 mt-16;
 
-  .v-btn {
-    @apply flex-1;
+  header .v-btn {
+    @apply flex-1 normal-case font-normal;
   }
 
   header {
