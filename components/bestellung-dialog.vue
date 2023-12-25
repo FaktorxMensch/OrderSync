@@ -11,13 +11,13 @@ const emit = defineEmits(['close'])
       >Bestellung {{ bestellung.id }}</h1>
 
       <v-btn-toggle
+          class="mt-4 w-full"
           v-model="bestellung.status"
           divided
           variant="outlined"
           @click="emit('close')"
           mandatory
       >
-<!--        <v-btn value="Neu">Neu</v-btn>-->
         <v-btn value="Erhalten">Erhalten</v-btn>
         <v-btn value="Bearbeitung">Bearbeitung</v-btn>
         <v-btn value="Abholbereit">Abholbereit</v-btn>
@@ -43,7 +43,7 @@ const emit = defineEmits(['close'])
   @apply absolute inset-0 z-50 bg-neutral-800 mt-16;
 
   .v-btn {
-    @apply w-1/5;
+    @apply flex-1;
   }
 
   header {
