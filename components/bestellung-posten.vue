@@ -15,7 +15,7 @@ defineProps(['posten'])
 
 <style scoped>
 .posten {
-  @apply flex gap-2 items-center border-b border-neutral-700 p-2 px-4 ;
+  @apply flex gap-2 items-center border-b border-neutral-700 p-2 px-4;
 
   img {
     @apply rounded-md;
