@@ -30,7 +30,7 @@ const openBestellung = (item: any) => {
 
 <template>
   <bestellung-dialog/>
-  <v-data-table :headers="headers" :items="bestellungen" items-per-page="4">
+  <v-data-table :headers="headers" :items="bestellungen">
     <template v-slot:item="{ item }">
       <tr :class="item.status" @click="openBestellung(item)">
         <td>{{ new Date(item.abholzeit).toLocaleTimeString('de-de', {hour: '2-digit', minute: '2-digit'}) }}</td>
