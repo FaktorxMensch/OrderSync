@@ -6,28 +6,41 @@ const emit = defineEmits(['close'])
 <template>
   <div class="full-dialog" v-if="bestellung?.id">
     <header>
-      <v-btn-toggle
-          class="w-full"
-          v-model="bestellung.status"
-          divided
-          density="comfortable"
-          variant="tonal"
-          @click="emit('close')"
-          mandatory
-      >
-        <v-btn value="Erhalten">Erhalten
-        </v-btn>
-        <v-btn value="Bearbeitung"
-               :color="bestellung.status === 'Bearbeitung' ? 'blue' : 'default'"
-        >Bearbeitung
-        </v-btn>
-        <v-btn value="Abholbereit"
-               :color="bestellung.status === 'Abholbereit' ? 'success' : 'default'"
-        >Abholbereit
-        </v-btn>
-        <v-btn value="Abgeholt">Abgeholt</v-btn>
-        <v-btn value="Storniert">Storniert</v-btn>
-      </v-btn-toggle>
+
+      <v-slide-group>
+        <v-btn-toggle
+            class="w-full"
+            v-model="bestellung.status"
+            divided
+            density="comfortable"
+            variant="tonal"
+            @click="emit('close')"
+            mandatory
+        >
+          <v-slide-group-item>
+            <v-btn value="Erhalten">Erhalten
+            </v-btn>
+          </v-slide-group-item>
+          <v-slide-group-item>
+            <v-btn value="Bearbeitung"
+                   :color="bestellung.status === 'Bearbeitung' ? 'blue' : 'default'"
+            >Bearbeitung
+            </v-btn>
+          </v-slide-group-item>
+          <v-slide-group-item>
+            <v-btn value="Abholbereit"
+                   :color="bestellung.status === 'Abholbereit' ? 'success' : 'default'"
+            >Abholbereit
+            </v-btn>
+          </v-slide-group-item>
+          <v-slide-group-item>
+            <v-btn value="Abgeholt">Abgeholt</v-btn>
+          </v-slide-group-item>
+          <v-slide-group-item>
+            <v-btn value="Storniert">Storniert</v-btn>
+          </v-slide-group-item>
+        </v-btn-toggle>
+      </v-slide-group>
     </header>
     <main>
       <bestellung-posten v-for="posten in bestellung.posten" :key="posten.id" :posten="posten"/>

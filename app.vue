@@ -31,9 +31,9 @@ setInterval(refresh, 1000 * 60 * 5)
   <v-theme-provider theme="dark">
     <v-app>
       <v-app-bar>
-        <v-toolbar-title>Bestellungen</v-toolbar-title>
+        <v-toolbar-title>Übersicht</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-chip text-color="white">Aktualisiert
+        <v-chip text-color="white">Stand
           {{ new Date(data?.request_time).toLocaleTimeString('de-de', {hour: '2-digit', minute: '2-digit'}) }}
         </v-chip>
         <v-btn @click="addRandomOrder" icon="mdi-plus"/>
