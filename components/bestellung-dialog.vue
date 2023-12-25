@@ -7,9 +7,10 @@ const emit = defineEmits(['close'])
   <div class="full-dialog" v-if="bestellung?.id">
     <header>
       <v-btn-toggle
-          class="mt-4 w-full"
+          class="w-full"
           v-model="bestellung.status"
           divided
+          density="comfortable"
           variant="tonal"
           @click="emit('close')"
           mandatory
@@ -27,7 +28,6 @@ const emit = defineEmits(['close'])
         <v-btn value="Abgeholt">Abgeholt</v-btn>
         <v-btn value="Storniert">Storniert</v-btn>
       </v-btn-toggle>
-
     </header>
     <main>
       <bestellung-posten v-for="posten in bestellung.posten" :key="posten.id" :posten="posten"/>
@@ -47,7 +47,7 @@ const emit = defineEmits(['close'])
 
 <style scoped>
 .full-dialog {
-  @apply absolute inset-0 z-50 bg-neutral-800 mt-16;
+  @apply fixed inset-0 z-50 bg-neutral-800 mt-16 overflow-x-auto;
 
   header .v-btn {
     @apply flex-1 normal-case font-normal;
@@ -57,8 +57,12 @@ const emit = defineEmits(['close'])
     @apply p-4;
   }
 
+  main {
+    @apply pb-12;
+  }
+
   footer {
-    @apply absolute bottom-0 p-4 flex w-full;
+    @apply fixed bottom-0 p-4 flex w-full;
   }
 }
 </style>

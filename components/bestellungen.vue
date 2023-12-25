@@ -51,11 +51,13 @@ tr.Erhalten {
 }
 
 tr.Bearbeitung {
-  @apply bg-sky-500 text-sky-500;
+  background: #2E3F52;
+  color: #4994EA;
 }
 
 tr.Abholbereit {
-  @apply bg-green-500 text-green-500;
+  background: #344432;
+  color: #66AD5B;
 }
 
 tr.Storniert {

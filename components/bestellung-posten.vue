@@ -4,7 +4,7 @@ defineProps(['posten'])
 
 <template>
   <div class="posten">
-    <img class="aspect-square w-20" :src="posten.gericht.bild_url"/>
+    <img class="aspect-square w-12" :src="posten.gericht.bild_url"/>
     <div class="flex-1">
       <h2>{{ posten.gericht.name }}</h2>
       <span class="text-neutral-500">{{ posten.gericht.kategorie }}</span>
